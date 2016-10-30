@@ -1,0 +1,232 @@
+<!DOCTYPE html><html><head><title>Koch Snowflake Diagram Maker</title>
+
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="shortcut icon" href="favicon.ico">
+<meta name="viewport" content="width=689, initial-scale=1">
+
+</head>
+
+<body>
+	<center>
+
+		<table style="position:absolute; left:10px; top:10px; background-color:black;">
+			<td>
+				<a href="#popup1"><img title="Information" src="../jdgmiles.github.io/questionmark.png" style="width:60px; height:60px"></a><br>
+				<a href="https://twitter.com/jimdgmiles" target=blank_><img title="James Miles on Twitter" src="../jdgmiles.github.io/twitter.png" style="width:60px; height:60px"></a><br>
+				<a href="http://jdgmiles.github.io/" target="_blank"><img title="Projects Page" src="../jdgmiles.github.io/jdgm.png" style="width:60px; height:60px"></a>
+			</td>
+		</table>
+
+		<div id="popup1" class="overlay">
+			<div class="popup">
+				<div style="font-family:Georgia; color:white; text-align:center; font-size:45px; text-decoration:underline;">Koch Snowflake Diagram Maker</div>
+	      <a class="close" href="#">&times;</a><br>
+				<a style="font-family:Georgia; font-size:36px; color:white; text-align:center;">A simple tool for drawing the first six iterations of the Koch Snowflake, with custom colour schemes.</a><br><br>
+			</div>
+		</div>
+
+		<table style="width:1130px">
+			<tr>
+				<td><canvas id="canvas" style="padding:0px 10px 0px 80px;"></canvas></td>
+				<td><center>
+					<button onclick="if(desirediterations>1){desirediterations--; redraw();}">Previous Iteration</button><button onclick="if(desirediterations<6){desirediterations++; redraw();}">Next Iteration</button><br><br>
+
+					<a class="controlstext">Snowflake Colour </a><br><br>
+					<button style="color:#FF0000" onclick="colourchange('snowflake','red','minus');">&#8722;</button><button style="color:#FF0000" onclick="colourchange('snowflake','red','plus');">+</button>
+					<button style="color:#00DD00" onclick="colourchange('snowflake','green','minus');">&#8722;</button><button style="color:#00CC00" onclick="colourchange('snowflake','green','plus');">+</button>
+					<button style="color:#1177FF" onclick="colourchange('snowflake','blue','minus');">&#8722;</button><button style="color:#1177FF" onclick="colourchange('snowflake','blue','plus');">+</button>
+					<button id="snowflakecoloursample" onclick="randomcolours(0);">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+					<input id="snowflakecolourbox" class="colourbox" type="text" onblur="if(this.value==''){randomcolours(0);} else{snowflakecolour=this.value; replacergbs(); redraw();}">
+
+				</center></td>
+			</tr>
+		</table>
+
+  </center>
+</body>
+</html>
+
+<script type="text/javascript">
+
+var field={width:614, height:702};
+var colourincrement=10;
+
+var fieldcolour="#000000";
+
+var framecolour="#FFFFFF";
+
+var snowflaker=128;
+var snowflakerhex=snowflaker.toString(16); if(snowflaker<16){snowflakerhex="0"+snowflakerhex;}
+var snowflakeg=128;
+var snowflakeghex=snowflakeg.toString(16); if(snowflakeg<16){snowflakeghex="0"+snowflakeghex;}
+var snowflakeb=128;
+var snowflakebhex=snowflakeb.toString(16); if(snowflakeb<16){snowflakebhex="0"+snowflakebhex;}
+var	snowflakecolour="#"+snowflakerhex+""+snowflakeghex+""+snowflakebhex;
+
+var pathcolour="#FFFFFF";
+var canvas=document.getElementById("canvas"), ctx=canvas.getContext("2d");
+var currentx=field.width/2;
+var currenty=5;
+var scale=600;
+var instruction=0;
+var commands;
+var iterationstage=0;
+var iterationstages=3;
+var thickness=1;
+var code=[];
+var desirediterations=3;
+generatecode(desirediterations);
+generatecommands(code[desirediterations]);
+
+canvas.width = field.width;
+canvas.height = field.height;
+
+document.getElementById("snowflakecoloursample").style.backgroundColor=snowflakecolour;
+document.getElementById("snowflakecolourbox").value=snowflakecolour;
+
+function draw(){
+
+	if(iterationstage==iterationstages){
+		ctx.lineWidth=thickness;
+		ctx.fillStyle=snowflakecolour;
+		ctx.strokeStyle=pathcolour;
+		ctx.closePath();
+		ctx.fill();
+		ctx.stroke();
+		iterationstages=iterationstages*4;
+		iterationstage=0;
+		scale=scale/3;
+	}
+
+	if(instruction<commands.length){
+		if(iterationstage==0){ctx.fillStyle=fieldcolour; ctx.fillRect(0,0,field.width,field.height); ctx.lineWidth=4; ctx.strokeStyle=framecolour; ctx.strokeRect(0,0,field.width,field.height); ctx.beginPath();}
+		iterationstage++; piece(commands[instruction]);
+	}
+}
+
+ function piece(n){
+	if(n==1){currentx=currentx-scale;}
+	if(n==2){currentx=currentx-Math.cos(Math.PI/3)*scale; currenty=currenty+Math.sin(Math.PI/3)*scale;}
+	if(n==3){currentx=currentx+Math.cos(Math.PI/3)*scale; currenty=currenty+Math.sin(Math.PI/3)*scale;}
+	if(n==4){currentx=currentx+scale;}
+	if(n==5){currentx=currentx+Math.cos(Math.PI/3)*scale; currenty=currenty-Math.sin(Math.PI/3)*scale;}
+	if(n==6){currentx=currentx-Math.cos(Math.PI/3)*scale; currenty=currenty-Math.sin(Math.PI/3)*scale;}
+	ctx.lineTo(currentx,currenty);
+	instruction++; draw();
+}
+
+function LorR(d, ls){ // I did this a clever way at first, but there was a really annoying bug that I just COULDN'T see the reason for so went with a dumb lookup table in the end
+	if(d=="L" && ls==1){return 3}
+	if(d=="L" && ls==2){return 4}
+	if(d=="L" && ls==3){return 5}
+	if(d=="L" && ls==4){return 6}
+	if(d=="L" && ls==5){return 1}
+	if(d=="L" && ls==6){return 2}
+	if(d=="R" && ls==1){return 6}
+	if(d=="R" && ls==2){return 1}
+	if(d=="R" && ls==3){return 2}
+	if(d=="R" && ls==4){return 3}
+	if(d=="R" && ls==5){return 4}
+	if(d=="R" && ls==6){return 5}
+}
+
+function generatecommands(p){
+	commands="2";
+	for(i=1; i<p.length; i++){
+		commands= commands + "" + LorR(p[i],commands[i-1]);
+	}
+}
+
+function generatecode(n){
+	code[0]="LLL";
+	code[n]="";
+	for(i=1; i<n; i++){
+		code[n]=code[n]+""+code[i-1];
+		code[i]="";
+		for(j=0; j<code[i-1].length; j++){
+			code[i]=code[i]+""+code[i-1][j]+""+"RLR";
+		}
+	}
+	code[n]=code[n]+""+code[n-1];
+}
+
+function redraw(){
+	scale=600;
+	instruction=0;
+	iterationstages=3;
+	generatecode(desirediterations);
+	generatecommands(code[desirediterations]);
+	document.getElementById("snowflakecoloursample").style.backgroundColor=snowflakecolour;
+	document.getElementById("snowflakecolourbox").value=snowflakecolour;
+	draw();
+}
+
+function colourchange(a,b,c){
+	if(a=="snowflake"){
+		if(b=="red"){
+			if(c=="plus"){
+				snowflaker=snowflaker+colourincrement; if(snowflaker>255){snowflaker=255;}
+				snowflakerhex=snowflaker.toString(16); if(snowflaker<16){snowflakerhex="0"+snowflakerhex;}
+				snowflakecolour="#"+snowflakerhex+""+snowflakeghex+""+snowflakebhex;
+			}
+			if(c=="minus"){
+				snowflaker=snowflaker-colourincrement; if(snowflaker<0){snowflaker=0;}
+				snowflakerhex=snowflaker.toString(16); if(snowflaker<16){snowflakerhex="0"+snowflakerhex;}
+				snowflakecolour="#"+snowflakerhex+""+snowflakeghex+""+snowflakebhex;
+			}
+		}
+		if(b=="green"){
+			if(c=="plus"){
+				snowflakeg=snowflakeg+colourincrement; if(snowflakeg>255){snowflakeg=255;}
+				snowflakeghex=snowflakeg.toString(16); if(snowflakeg<16){snowflakeghex="0"+snowflakeghex;}
+				snowflakecolour="#"+snowflakerhex+""+snowflakeghex+""+snowflakebhex;
+			}
+			if(c=="minus"){
+				snowflakeg=snowflakeg-colourincrement; if(snowflakeg<0){snowflakeg=0;}
+				snowflakeghex=snowflakeg.toString(16); if(snowflakeg<16){snowflakeghex="0"+snowflakeghex;}
+				snowflakecolour="#"+snowflakerhex+""+snowflakeghex+""+snowflakebhex;
+			}
+		}
+		if(b=="blue"){
+			if(c=="plus"){
+				snowflakeb=snowflakeb+colourincrement; if(snowflakeb>255){snowflakeb=255;}
+				snowflakebhex=snowflakeb.toString(16); if(snowflakeb<16){snowflakebhex="0"+snowflakebhex;}
+				snowflakecolour="#"+snowflakerhex+""+snowflakeghex+""+snowflakebhex;
+			}
+			if(c=="minus"){
+				snowflakeb=snowflakeb-colourincrement; if(snowflakeb<0){snowflakeb=0;}
+				snowflakebhex=snowflakeb.toString(16); if(snowflakeb<16){snowflakebhex="0"+snowflakebhex;}
+				snowflakecolour="#"+snowflakerhex+""+snowflakeghex+""+snowflakebhex;
+			}
+		}
+	}
+	document.getElementById("snowflakecoloursample").style.backgroundColor=snowflakecolour;
+	document.getElementById("snowflakecolourbox").value=snowflakecolour;
+	redraw();
+}
+
+function replacergbs(){
+	snowflaker=parseInt(""+snowflakecolour[1]+""+snowflakecolour[2], 16);
+	snowflakerhex=snowflaker.toString(16); if(snowflaker<16){snowflakerhex="0"+snowflakerhex;}
+	snowflakeg=parseInt(""+snowflakecolour[3]+""+snowflakecolour[4], 16);
+	snowflakeghex=snowflakeg.toString(16); if(snowflakeg<16){snowflakeghex="0"+snowflakeghex;}
+	snowflakeb=parseInt(""+snowflakecolour[5]+""+snowflakecolour[6], 16);
+	snowflakebhex=snowflakeb.toString(16); if(snowflakeb<16){snowflakebhex="0"+snowflakebhex;}
+}
+
+function randomcolours(n){
+	if(n==0){
+		snowflaker=Math.floor(Math.random()*256);
+		snowflakerhex=snowflaker.toString(16); if(snowflaker<16){snowflakerhex="0"+snowflakerhex;}
+		snowflakeg=Math.floor(Math.random()*256);
+		snowflakeghex=snowflakeg.toString(16); if(snowflakeg<16){snowflakeghex="0"+snowflakeghex;}
+		snowflakeb=Math.floor(Math.random()*256);
+		snowflakebhex=snowflakeb.toString(16); if(snowflakeb<16){snowflakebhex="0"+snowflakebhex;}
+		snowflakecolour="#"+snowflakerhex+""+snowflakeghex+""+snowflakebhex;
+	}
+	redraw();
+}
+
+draw();
+
+</script>

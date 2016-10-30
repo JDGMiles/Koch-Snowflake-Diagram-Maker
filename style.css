@@ -1,0 +1,70 @@
+@font-face {font-family: Liberation Serif; src: url(http://jdgmiles.github.io/LiberationSerif.woff);}
+
+body {font-family:Liberation Serif; color:white; background-color:#000000;}
+
+a:link {color:red; text-decoration:none;}
+a:link:hover {text-decoration:underline}
+a:visited {color:#DD0000;}
+
+.maintitle {font-size:40px; text-decoration:underline;}
+
+button {font-family:Liberation Serif; background-color:black; color:white; font-size:30px; height:50px;}
+
+.controlstext {font-size:35px; text-decoration:underline;}
+
+.colourbox {background-color:black; color:white; font-size:32px; font-family:Liberation Serif; text-align:center; height:44px; width:140px;}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+  z-index:5;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 180px auto;
+  padding: 20px;
+  background: #181818;
+  border:2px solid #AAAAAA;
+  border-radius: 20px;
+  width: 450px;
+  position: relative;
+  transition: all 0s ease-in-out;
+}
+
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+}
+.popup .close:hover {
+  color: #DD0000;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+@media screen and (max-width: 700px){
+  .box{
+    width: 70%;
+  }
+  .popup{
+    width: 70%;
+  }
+}
