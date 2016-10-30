@@ -128,6 +128,7 @@ var fieldghex=fieldg.toString(16); if(fieldg<16){fieldghex="0"+fieldghex;}
 var fieldb=0;
 var fieldbhex=fieldb.toString(16); if(fieldb<16){fieldbhex="0"+fieldbhex;}
 var	fieldcolour="#"+fieldrhex+""+fieldghex+""+fieldbhex;
+fieldcolour="#000000";
 
 var framer=255;
 var framerhex=framer.toString(16); if(framer<16){framerhex="0"+framerhex;}
@@ -136,6 +137,7 @@ var frameghex=frameg.toString(16); if(frameg<16){frameghex="0"+frameghex;}
 var frameb=255;
 var framebhex=frameb.toString(16); if(frameb<16){framebhex="0"+framebhex;}
 var	framecolour="#"+framerhex+""+frameghex+""+framebhex;
+framecolour="#693c96";
 
 var snowflaker=128;
 var snowflakerhex=snowflaker.toString(16); if(snowflaker<16){snowflakerhex="0"+snowflakerhex;}
@@ -144,6 +146,7 @@ var snowflakeghex=snowflakeg.toString(16); if(snowflakeg<16){snowflakeghex="0"+s
 var snowflakeb=128;
 var snowflakebhex=snowflakeb.toString(16); if(snowflakeb<16){snowflakebhex="0"+snowflakebhex;}
 var	snowflakecolour="#"+snowflakerhex+""+snowflakeghex+""+snowflakebhex;
+snowflakecolour="#0a0f28";
 
 var pathr=255;
 var pathrhex=pathr.toString(16); if(pathr<16){pathrhex="0"+pathrhex;}
@@ -152,6 +155,7 @@ var pathghex=pathg.toString(16); if(pathg<16){pathghex="0"+pathghex;}
 var pathb=255;
 var pathbhex=pathb.toString(16); if(pathb<16){pathbhex="0"+pathbhex;}
 var	pathcolour="#"+pathrhex+""+pathghex+""+pathbhex;
+pathcolour="#f0b4ff";
 
 var canvas=document.getElementById("canvas"), ctx=canvas.getContext("2d");
 var currentx=field.width/2;
@@ -171,6 +175,8 @@ var whatareyoucolouring=0;
 
 canvas.width = field.width;
 canvas.height = field.height;
+
+replacergbs();
 
 document.getElementById("snowflakecoloursample").style.backgroundColor=snowflakecolour;
 document.getElementById("snowflakecolourbox").value=snowflakecolour;
