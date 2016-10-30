@@ -2,58 +2,91 @@
 
 <link rel="stylesheet" type="text/css" href="style.css">
 <link rel="shortcut icon" href="favicon.ico">
-<meta name="viewport" content="width=689, initial-scale=1">
+<meta name="viewport" content="width=1150, initial-scale=1">
 
 </head>
 
-<body>
-	<center>
+<body><center>
 
-		<table style="position:absolute; left:10px; top:10px; background-color:black;">
-			<td>
-				<a href="#popup1"><img title="Information" src="../jdgmiles.github.io/questionmark.png" style="width:60px; height:60px"></a><br>
-				<a href="https://twitter.com/jimdgmiles" target=blank_><img title="James Miles on Twitter" src="../jdgmiles.github.io/twitter.png" style="width:60px; height:60px"></a><br>
-				<a href="http://jdgmiles.github.io/" target="_blank"><img title="Projects Page" src="../jdgmiles.github.io/jdgm.png" style="width:60px; height:60px"></a>
-			</td>
-		</table>
+	<table style="position:absolute; left:10px; top:10px; background-color:black;">
+		<td>
+			<a href="#popup1"><img title="Information" src="../jdgmiles.github.io/questionmark.png" style="width:60px; height:60px"></a><br>
+			<a href="https://twitter.com/jimdgmiles" target=blank_><img title="James Miles on Twitter" src="../jdgmiles.github.io/twitter.png" style="width:60px; height:60px"></a><br>
+			<a href="http://jdgmiles.github.io/" target="_blank"><img title="Projects Page" src="../jdgmiles.github.io/jdgm.png" style="width:60px; height:60px"></a>
+		</td>
+	</table>
 
-		<div id="popup1" class="overlay">
-			<div class="popup">
-				<div style="font-family:Georgia; color:white; text-align:center; font-size:45px; text-decoration:underline;">Koch Snowflake Diagram Maker</div>
-	      <a class="close" href="#">&times;</a><br>
-				<a style="font-family:Georgia; font-size:36px; color:white; text-align:center;">A simple tool for drawing the first six iterations of the Koch Snowflake, with custom colour schemes.</a><br><br>
-			</div>
+	<div id="popup1" class="overlay">
+		<div class="popup">
+			<div style="font-family:Georgia; color:white; text-align:center; font-size:45px; text-decoration:underline;">Koch Snowflake Diagram Maker</div>
+      <a class="close" href="#">&times;</a><br>
+			<a style="font-family:Georgia; font-size:36px; color:white; text-align:center;">A simple tool for drawing the first six iterations of the Koch Snowflake, with custom colour schemes.</a><br><br>
 		</div>
+	</div>
 
-		<table style="width:1130px">
-			<tr>
-				<td><canvas id="canvas" style="padding:0px 10px 0px 80px;"></canvas></td>
-				<td><center>
-					<button onclick="if(desirediterations>1){desirediterations--; redraw();}">Previous Iteration</button><button onclick="if(desirediterations<6){desirediterations++; redraw();}">Next Iteration</button><br><br>
+	<table style="width:1130px"><tr>
 
-					<a class="controlstext">Snowflake Colour </a><br><br>
-					<button style="color:#FF0000" onclick="colourchange('snowflake','red','minus');">&#8722;</button><button style="color:#FF0000" onclick="colourchange('snowflake','red','plus');">+</button>
-					<button style="color:#00DD00" onclick="colourchange('snowflake','green','minus');">&#8722;</button><button style="color:#00CC00" onclick="colourchange('snowflake','green','plus');">+</button>
-					<button style="color:#1177FF" onclick="colourchange('snowflake','blue','minus');">&#8722;</button><button style="color:#1177FF" onclick="colourchange('snowflake','blue','plus');">+</button>
-					<button id="snowflakecoloursample" onclick="randomcolours(0);">&nbsp;&nbsp;&nbsp;&nbsp;</button>
-					<input id="snowflakecolourbox" class="colourbox" type="text" onblur="if(this.value==''){randomcolours(0);} else{snowflakecolour=this.value; replacergbs(); redraw();}">
+		<td><canvas id="canvas" style="padding:0px 10px 0px 80px;"></canvas></td>
 
-				</center></td>
-			</tr>
-		</table>
+		<td><center>
 
-  </center>
-</body>
-</html>
+			<a class="controlstext">Iteration Control</a><br><br>
+			<button onclick="if(desirediterations>1){desirediterations--; redraw();}">Previous Iteration</button><button onclick="if(desirediterations<6){desirediterations++; redraw();}">Next Iteration</button><br><br>
+
+			<a class="controlstext">Snowflake Colour</a><br><br>
+			<button style="color:#FF0000" onclick="colourchange('snowflake','red','minus');">&#8722;</button><button style="color:#FF0000" onclick="colourchange('snowflake','red','plus');">+</button>
+			<button style="color:#00DD00" onclick="colourchange('snowflake','green','minus');">&#8722;</button><button style="color:#00CC00" onclick="colourchange('snowflake','green','plus');">+</button>
+			<button style="color:#1177FF" onclick="colourchange('snowflake','blue','minus');">&#8722;</button><button style="color:#1177FF" onclick="colourchange('snowflake','blue','plus');">+</button>
+			<button id="snowflakecoloursample" onclick="randomcolours(0);">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+			<input id="snowflakecolourbox" class="colourbox" type="text" onblur="if(this.value==''){randomcolours(0);} else{snowflakecolour=this.value; replacergbs(); redraw();}"><br><br>
+
+			<a class="controlstext">Background Colour</a><br><br>
+			<button style="color:#FF0000" onclick="colourchange('field','red','minus');">&#8722;</button><button style="color:#FF0000" onclick="colourchange('field','red','plus');">+</button>
+			<button style="color:#00DD00" onclick="colourchange('field','green','minus');">&#8722;</button><button style="color:#00CC00" onclick="colourchange('field','green','plus');">+</button>
+			<button style="color:#1177FF" onclick="colourchange('field','blue','minus');">&#8722;</button><button style="color:#1177FF" onclick="colourchange('field','blue','plus');">+</button>
+			<button id="fieldcoloursample" onclick="randomcolours(1);">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+			<input id="fieldcolourbox" class="colourbox" type="text" onblur="if(this.value==''){randomcolours(1);} else{fieldcolour=this.value; replacergbs(); redraw();}"><br><br>
+
+			<a class="controlstext">Outline Colour</a><br><br>
+			<button style="color:#FF0000" onclick="colourchange('path','red','minus');">&#8722;</button><button style="color:#FF0000" onclick="colourchange('path','red','plus');">+</button>
+			<button style="color:#00DD00" onclick="colourchange('path','green','minus');">&#8722;</button><button style="color:#00CC00" onclick="colourchange('path','green','plus');">+</button>
+			<button style="color:#1177FF" onclick="colourchange('path','blue','minus');">&#8722;</button><button style="color:#1177FF" onclick="colourchange('path','blue','plus');">+</button>
+			<button id="pathcoloursample" onclick="randomcolours(2);">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+			<input id="pathcolourbox" class="colourbox" type="text" onblur="if(this.value==''){randomcolours(2);} else{pathcolour=this.value; replacergbs(); redraw();}"><br><br>
+
+			<a class="controlstext">Frame Colour</a><br><br>
+			<button style="color:#FF0000" onclick="colourchange('frame','red','minus');">&#8722;</button><button style="color:#FF0000" onclick="colourchange('frame','red','plus');">+</button>
+			<button style="color:#00DD00" onclick="colourchange('frame','green','minus');">&#8722;</button><button style="color:#00CC00" onclick="colourchange('frame','green','plus');">+</button>
+			<button style="color:#1177FF" onclick="colourchange('frame','blue','minus');">&#8722;</button><button style="color:#1177FF" onclick="colourchange('frame','blue','plus');">+</button>
+			<button id="framecoloursample" onclick="randomcolours(3);">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+			<input id="framecolourbox" class="colourbox" type="text" onblur="if(this.value==''){randomcolours(3);} else{framecolour=this.value; replacergbs(); redraw();}"><br><br>
+
+		</center></td>
+
+	</tr></table>
+
+</center></body></html>
 
 <script type="text/javascript">
 
 var field={width:614, height:702};
-var colourincrement=10;
+var colourincrement=15;
 
-var fieldcolour="#000000";
+var fieldr=0;
+var fieldrhex=fieldr.toString(16); if(fieldr<16){fieldrhex="0"+fieldrhex;}
+var fieldg=0;
+var fieldghex=fieldg.toString(16); if(fieldg<16){fieldghex="0"+fieldghex;}
+var fieldb=0;
+var fieldbhex=fieldb.toString(16); if(fieldb<16){fieldbhex="0"+fieldbhex;}
+var	fieldcolour="#"+fieldrhex+""+fieldghex+""+fieldbhex;
 
-var framecolour="#FFFFFF";
+var framer=255;
+var framerhex=framer.toString(16); if(framer<16){framerhex="0"+framerhex;}
+var frameg=255;
+var frameghex=frameg.toString(16); if(frameg<16){frameghex="0"+frameghex;}
+var frameb=255;
+var framebhex=frameb.toString(16); if(frameb<16){framebhex="0"+framebhex;}
+var	framecolour="#"+framerhex+""+frameghex+""+framebhex;
 
 var snowflaker=128;
 var snowflakerhex=snowflaker.toString(16); if(snowflaker<16){snowflakerhex="0"+snowflakerhex;}
@@ -63,7 +96,14 @@ var snowflakeb=128;
 var snowflakebhex=snowflakeb.toString(16); if(snowflakeb<16){snowflakebhex="0"+snowflakebhex;}
 var	snowflakecolour="#"+snowflakerhex+""+snowflakeghex+""+snowflakebhex;
 
-var pathcolour="#FFFFFF";
+var pathr=255;
+var pathrhex=pathr.toString(16); if(pathr<16){pathrhex="0"+pathrhex;}
+var pathg=255;
+var pathghex=pathg.toString(16); if(pathg<16){pathghex="0"+pathghex;}
+var pathb=255;
+var pathbhex=pathb.toString(16); if(pathb<16){pathbhex="0"+pathbhex;}
+var	pathcolour="#"+pathrhex+""+pathghex+""+pathbhex;
+
 var canvas=document.getElementById("canvas"), ctx=canvas.getContext("2d");
 var currentx=field.width/2;
 var currenty=5;
@@ -83,6 +123,12 @@ canvas.height = field.height;
 
 document.getElementById("snowflakecoloursample").style.backgroundColor=snowflakecolour;
 document.getElementById("snowflakecolourbox").value=snowflakecolour;
+document.getElementById("framecoloursample").style.backgroundColor=framecolour;
+document.getElementById("framecolourbox").value=framecolour;
+document.getElementById("fieldcoloursample").style.backgroundColor=fieldcolour;
+document.getElementById("fieldcolourbox").value=fieldcolour;
+document.getElementById("pathcoloursample").style.backgroundColor=pathcolour;
+document.getElementById("pathcolourbox").value=pathcolour;
 
 function draw(){
 
@@ -158,6 +204,12 @@ function redraw(){
 	generatecommands(code[desirediterations]);
 	document.getElementById("snowflakecoloursample").style.backgroundColor=snowflakecolour;
 	document.getElementById("snowflakecolourbox").value=snowflakecolour;
+	document.getElementById("framecoloursample").style.backgroundColor=framecolour;
+	document.getElementById("framecolourbox").value=framecolour;
+	document.getElementById("fieldcoloursample").style.backgroundColor=fieldcolour;
+	document.getElementById("fieldcolourbox").value=fieldcolour;
+	document.getElementById("pathcoloursample").style.backgroundColor=pathcolour;
+	document.getElementById("pathcolourbox").value=pathcolour;
 	draw();
 }
 
@@ -200,8 +252,128 @@ function colourchange(a,b,c){
 			}
 		}
 	}
+	if(a=="path"){
+	  if(b=="red"){
+	    if(c=="plus"){
+	      pathr=pathr+colourincrement; if(pathr>255){pathr=255;}
+	      pathrhex=pathr.toString(16); if(pathr<16){pathrhex="0"+pathrhex;}
+	      pathcolour="#"+pathrhex+""+pathghex+""+pathbhex;
+	    }
+	    if(c=="minus"){
+	      pathr=pathr-colourincrement; if(pathr<0){pathr=0;}
+	      pathrhex=pathr.toString(16); if(pathr<16){pathrhex="0"+pathrhex;}
+	      pathcolour="#"+pathrhex+""+pathghex+""+pathbhex;
+	    }
+	  }
+	  if(b=="green"){
+	    if(c=="plus"){
+	      pathg=pathg+colourincrement; if(pathg>255){pathg=255;}
+	      pathghex=pathg.toString(16); if(pathg<16){pathghex="0"+pathghex;}
+	      pathcolour="#"+pathrhex+""+pathghex+""+pathbhex;
+	    }
+	    if(c=="minus"){
+	      pathg=pathg-colourincrement; if(pathg<0){pathg=0;}
+	      pathghex=pathg.toString(16); if(pathg<16){pathghex="0"+pathghex;}
+	      pathcolour="#"+pathrhex+""+pathghex+""+pathbhex;
+	    }
+	  }
+	  if(b=="blue"){
+	    if(c=="plus"){
+	      pathb=pathb+colourincrement; if(pathb>255){pathb=255;}
+	      pathbhex=pathb.toString(16); if(pathb<16){pathbhex="0"+pathbhex;}
+	      pathcolour="#"+pathrhex+""+pathghex+""+pathbhex;
+	    }
+	    if(c=="minus"){
+	      pathb=pathb-colourincrement; if(pathb<0){pathb=0;}
+	      pathbhex=pathb.toString(16); if(pathb<16){pathbhex="0"+pathbhex;}
+	      pathcolour="#"+pathrhex+""+pathghex+""+pathbhex;
+	    }
+	  }
+	}
+	if(a=="field"){
+	  if(b=="red"){
+	    if(c=="plus"){
+	      fieldr=fieldr+colourincrement; if(fieldr>255){fieldr=255;}
+	      fieldrhex=fieldr.toString(16); if(fieldr<16){fieldrhex="0"+fieldrhex;}
+	      fieldcolour="#"+fieldrhex+""+fieldghex+""+fieldbhex;
+	    }
+	    if(c=="minus"){
+	      fieldr=fieldr-colourincrement; if(fieldr<0){fieldr=0;}
+	      fieldrhex=fieldr.toString(16); if(fieldr<16){fieldrhex="0"+fieldrhex;}
+	      fieldcolour="#"+fieldrhex+""+fieldghex+""+fieldbhex;
+	    }
+	  }
+	  if(b=="green"){
+	    if(c=="plus"){
+	      fieldg=fieldg+colourincrement; if(fieldg>255){fieldg=255;}
+	      fieldghex=fieldg.toString(16); if(fieldg<16){fieldghex="0"+fieldghex;}
+	      fieldcolour="#"+fieldrhex+""+fieldghex+""+fieldbhex;
+	    }
+	    if(c=="minus"){
+	      fieldg=fieldg-colourincrement; if(fieldg<0){fieldg=0;}
+	      fieldghex=fieldg.toString(16); if(fieldg<16){fieldghex="0"+fieldghex;}
+	      fieldcolour="#"+fieldrhex+""+fieldghex+""+fieldbhex;
+	    }
+	  }
+	  if(b=="blue"){
+	    if(c=="plus"){
+	      fieldb=fieldb+colourincrement; if(fieldb>255){fieldb=255;}
+	      fieldbhex=fieldb.toString(16); if(fieldb<16){fieldbhex="0"+fieldbhex;}
+	      fieldcolour="#"+fieldrhex+""+fieldghex+""+fieldbhex;
+	    }
+	    if(c=="minus"){
+	      fieldb=fieldb-colourincrement; if(fieldb<0){fieldb=0;}
+	      fieldbhex=fieldb.toString(16); if(fieldb<16){fieldbhex="0"+fieldbhex;}
+	      fieldcolour="#"+fieldrhex+""+fieldghex+""+fieldbhex;
+	    }
+	  }
+	}
+	if(a=="frame"){
+	  if(b=="red"){
+	    if(c=="plus"){
+	      framer=framer+colourincrement; if(framer>255){framer=255;}
+	      framerhex=framer.toString(16); if(framer<16){framerhex="0"+framerhex;}
+	      framecolour="#"+framerhex+""+frameghex+""+framebhex;
+	    }
+	    if(c=="minus"){
+	      framer=framer-colourincrement; if(framer<0){framer=0;}
+	      framerhex=framer.toString(16); if(framer<16){framerhex="0"+framerhex;}
+	      framecolour="#"+framerhex+""+frameghex+""+framebhex;
+	    }
+	  }
+	  if(b=="green"){
+	    if(c=="plus"){
+	      frameg=frameg+colourincrement; if(frameg>255){frameg=255;}
+	      frameghex=frameg.toString(16); if(frameg<16){frameghex="0"+frameghex;}
+	      framecolour="#"+framerhex+""+frameghex+""+framebhex;
+	    }
+	    if(c=="minus"){
+	      frameg=frameg-colourincrement; if(frameg<0){frameg=0;}
+	      frameghex=frameg.toString(16); if(frameg<16){frameghex="0"+frameghex;}
+	      framecolour="#"+framerhex+""+frameghex+""+framebhex;
+	    }
+	  }
+	  if(b=="blue"){
+	    if(c=="plus"){
+	      frameb=frameb+colourincrement; if(frameb>255){frameb=255;}
+	      framebhex=frameb.toString(16); if(frameb<16){framebhex="0"+framebhex;}
+	      framecolour="#"+framerhex+""+frameghex+""+framebhex;
+	    }
+	    if(c=="minus"){
+	      frameb=frameb-colourincrement; if(frameb<0){frameb=0;}
+	      framebhex=frameb.toString(16); if(frameb<16){framebhex="0"+framebhex;}
+	      framecolour="#"+framerhex+""+frameghex+""+framebhex;
+	    }
+	  }
+	}
 	document.getElementById("snowflakecoloursample").style.backgroundColor=snowflakecolour;
 	document.getElementById("snowflakecolourbox").value=snowflakecolour;
+	document.getElementById("framecoloursample").style.backgroundColor=framecolour;
+	document.getElementById("framecolourbox").value=framecolour;
+	document.getElementById("fieldcoloursample").style.backgroundColor=fieldcolour;
+	document.getElementById("fieldcolourbox").value=fieldcolour;
+	document.getElementById("pathcoloursample").style.backgroundColor=pathcolour;
+	document.getElementById("pathcolourbox").value=pathcolour;
 	redraw();
 }
 
@@ -212,6 +384,24 @@ function replacergbs(){
 	snowflakeghex=snowflakeg.toString(16); if(snowflakeg<16){snowflakeghex="0"+snowflakeghex;}
 	snowflakeb=parseInt(""+snowflakecolour[5]+""+snowflakecolour[6], 16);
 	snowflakebhex=snowflakeb.toString(16); if(snowflakeb<16){snowflakebhex="0"+snowflakebhex;}
+	pathr=parseInt(""+pathcolour[1]+""+pathcolour[2], 16);
+	pathrhex=pathr.toString(16); if(pathr<16){pathrhex="0"+pathrhex;}
+	pathg=parseInt(""+pathcolour[3]+""+pathcolour[4], 16);
+	pathghex=pathg.toString(16); if(pathg<16){pathghex="0"+pathghex;}
+	pathb=parseInt(""+pathcolour[5]+""+pathcolour[6], 16);
+	pathbhex=pathb.toString(16); if(pathb<16){pathbhex="0"+pathbhex;}
+	fieldr=parseInt(""+fieldcolour[1]+""+fieldcolour[2], 16);
+	fieldrhex=fieldr.toString(16); if(fieldr<16){fieldrhex="0"+fieldrhex;}
+	fieldg=parseInt(""+fieldcolour[3]+""+fieldcolour[4], 16);
+	fieldghex=fieldg.toString(16); if(fieldg<16){fieldghex="0"+fieldghex;}
+	fieldb=parseInt(""+fieldcolour[5]+""+fieldcolour[6], 16);
+	fieldbhex=fieldb.toString(16); if(fieldb<16){fieldbhex="0"+fieldbhex;}
+	framer=parseInt(""+framecolour[1]+""+framecolour[2], 16);
+	framerhex=framer.toString(16); if(framer<16){framerhex="0"+framerhex;}
+	frameg=parseInt(""+framecolour[3]+""+framecolour[4], 16);
+	frameghex=frameg.toString(16); if(frameg<16){frameghex="0"+frameghex;}
+	frameb=parseInt(""+framecolour[5]+""+framecolour[6], 16);
+	framebhex=frameb.toString(16); if(frameb<16){framebhex="0"+framebhex;}
 }
 
 function randomcolours(n){
@@ -223,6 +413,33 @@ function randomcolours(n){
 		snowflakeb=Math.floor(Math.random()*256);
 		snowflakebhex=snowflakeb.toString(16); if(snowflakeb<16){snowflakebhex="0"+snowflakebhex;}
 		snowflakecolour="#"+snowflakerhex+""+snowflakeghex+""+snowflakebhex;
+	}
+	if(n==1){
+	  fieldr=Math.floor(Math.random()*256);
+	  fieldrhex=fieldr.toString(16); if(fieldr<16){fieldrhex="0"+fieldrhex;}
+	  fieldg=Math.floor(Math.random()*256);
+	  fieldghex=fieldg.toString(16); if(fieldg<16){fieldghex="0"+fieldghex;}
+	  fieldb=Math.floor(Math.random()*256);
+	  fieldbhex=fieldb.toString(16); if(fieldb<16){fieldbhex="0"+fieldbhex;}
+	  fieldcolour="#"+fieldrhex+""+fieldghex+""+fieldbhex;
+	}
+	if(n==2){
+	  pathr=Math.floor(Math.random()*256);
+	  pathrhex=pathr.toString(16); if(pathr<16){pathrhex="0"+pathrhex;}
+	  pathg=Math.floor(Math.random()*256);
+	  pathghex=pathg.toString(16); if(pathg<16){pathghex="0"+pathghex;}
+	  pathb=Math.floor(Math.random()*256);
+	  pathbhex=pathb.toString(16); if(pathb<16){pathbhex="0"+pathbhex;}
+	  pathcolour="#"+pathrhex+""+pathghex+""+pathbhex;
+	}
+	if(n==3){
+	  framer=Math.floor(Math.random()*256);
+	  framerhex=framer.toString(16); if(framer<16){framerhex="0"+framerhex;}
+	  frameg=Math.floor(Math.random()*256);
+	  frameghex=frameg.toString(16); if(frameg<16){frameghex="0"+frameghex;}
+	  frameb=Math.floor(Math.random()*256);
+	  framebhex=frameb.toString(16); if(frameb<16){framebhex="0"+framebhex;}
+	  framecolour="#"+framerhex+""+frameghex+""+framebhex;
 	}
 	redraw();
 }

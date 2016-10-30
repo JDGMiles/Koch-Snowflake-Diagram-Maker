@@ -6,8 +6,6 @@ a:link {color:red; text-decoration:none;}
 a:link:hover {text-decoration:underline}
 a:visited {color:#DD0000;}
 
-.maintitle {font-size:40px; text-decoration:underline;}
-
 button {font-family:Liberation Serif; background-color:black; color:white; font-size:30px; height:50px;}
 
 .controlstext {font-size:35px; text-decoration:underline;}
