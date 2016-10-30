@@ -34,36 +34,85 @@
 			<button onclick="if(desirediterations>1){desirediterations--; redraw();}">Previous Iteration</button><button onclick="if(desirediterations<6){desirediterations++; redraw();}">Next Iteration</button><br><br>
 
 			<a class="controlstext">Snowflake Colour</a><br><br>
-			<button style="color:#FF0000" onclick="colourchange('snowflake','red','minus');">&#8722;</button><button style="color:#FF0000" onclick="colourchange('snowflake','red','plus');">+</button>
-			<button style="color:#00DD00" onclick="colourchange('snowflake','green','minus');">&#8722;</button><button style="color:#00CC00" onclick="colourchange('snowflake','green','plus');">+</button>
-			<button style="color:#1177FF" onclick="colourchange('snowflake','blue','minus');">&#8722;</button><button style="color:#1177FF" onclick="colourchange('snowflake','blue','plus');">+</button>
-			<button id="snowflakecoloursample" onclick="randomcolours(0);">&nbsp;&nbsp;&nbsp;&nbsp;</button>
-			<input id="snowflakecolourbox" class="colourbox" type="text" onblur="if(this.value==''){randomcolours(0);} else{snowflakecolour=this.value; replacergbs(); redraw();}"><br><br>
+			<button style="color:#FF0000" onfocus="document.getElementById('colourpicker').style.visibility='hidden';" onclick="colourchange('snowflake','red','minus');">&#8722;</button><button style="color:#FF0000" onfocus="document.getElementById('colourpicker').style.visibility='hidden';" onclick="colourchange('snowflake','red','plus');">+</button>
+			<button style="color:#00DD00" onfocus="document.getElementById('colourpicker').style.visibility='hidden';" onclick="colourchange('snowflake','green','minus');">&#8722;</button><button style="color:#00CC00" onfocus="document.getElementById('colourpicker').style.visibility='hidden';" onclick="colourchange('snowflake','green','plus');">+</button>
+			<button style="color:#1177FF" onfocus="document.getElementById('colourpicker').style.visibility='hidden';" onclick="colourchange('snowflake','blue','minus');">&#8722;</button><button style="color:#1177FF" onfocus="document.getElementById('colourpicker').style.visibility='hidden';" onclick="colourchange('snowflake','blue','plus');">+</button>
+			<button id="snowflakecoloursample" onfocus="document.getElementById('colourpicker').style.visibility='hidden';" onclick="whatareyoucolouring=0; pickappear()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+			<input id="snowflakecolourbox" class="colourbox" onfocus="document.getElementById('colourpicker').style.visibility='hidden';" type="text" onblur="if(this.value==''){randomcolours(0);} else{snowflakecolour=this.value; replacergbs(); redraw();}"><br><br>
 
 			<a class="controlstext">Background Colour</a><br><br>
-			<button style="color:#FF0000" onclick="colourchange('field','red','minus');">&#8722;</button><button style="color:#FF0000" onclick="colourchange('field','red','plus');">+</button>
-			<button style="color:#00DD00" onclick="colourchange('field','green','minus');">&#8722;</button><button style="color:#00CC00" onclick="colourchange('field','green','plus');">+</button>
-			<button style="color:#1177FF" onclick="colourchange('field','blue','minus');">&#8722;</button><button style="color:#1177FF" onclick="colourchange('field','blue','plus');">+</button>
-			<button id="fieldcoloursample" onclick="randomcolours(1);">&nbsp;&nbsp;&nbsp;&nbsp;</button>
-			<input id="fieldcolourbox" class="colourbox" type="text" onblur="if(this.value==''){randomcolours(1);} else{fieldcolour=this.value; replacergbs(); redraw();}"><br><br>
+			<button style="color:#FF0000" onfocus="document.getElementById('colourpicker').style.visibility='hidden';" onclick="colourchange('field','red','minus');">&#8722;</button><button style="color:#FF0000" onfocus="document.getElementById('colourpicker').style.visibility='hidden';" onclick="colourchange('field','red','plus');">+</button>
+			<button style="color:#00DD00" onfocus="document.getElementById('colourpicker').style.visibility='hidden';" onclick="colourchange('field','green','minus');">&#8722;</button><button style="color:#00CC00" onfocus="document.getElementById('colourpicker').style.visibility='hidden';" onclick="colourchange('field','green','plus');">+</button>
+			<button style="color:#1177FF" onfocus="document.getElementById('colourpicker').style.visibility='hidden';" onclick="colourchange('field','blue','minus');">&#8722;</button><button style="color:#1177FF" onfocus="document.getElementById('colourpicker').style.visibility='hidden';" onclick="colourchange('field','blue','plus');">+</button>
+			<button id="fieldcoloursample" onfocus="document.getElementById('colourpicker').style.visibility='hidden';" onclick="whatareyoucolouring=1; pickappear()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+			<input id="fieldcolourbox" class="colourbox" onfocus="document.getElementById('colourpicker').style.visibility='hidden';" type="text" onblur="if(this.value==''){randomcolours(1);} else{fieldcolour=this.value; replacergbs(); redraw();}"><br><br>
 
 			<a class="controlstext">Outline Colour</a><br><br>
-			<button style="color:#FF0000" onclick="colourchange('path','red','minus');">&#8722;</button><button style="color:#FF0000" onclick="colourchange('path','red','plus');">+</button>
-			<button style="color:#00DD00" onclick="colourchange('path','green','minus');">&#8722;</button><button style="color:#00CC00" onclick="colourchange('path','green','plus');">+</button>
-			<button style="color:#1177FF" onclick="colourchange('path','blue','minus');">&#8722;</button><button style="color:#1177FF" onclick="colourchange('path','blue','plus');">+</button>
-			<button id="pathcoloursample" onclick="randomcolours(2);">&nbsp;&nbsp;&nbsp;&nbsp;</button>
-			<input id="pathcolourbox" class="colourbox" type="text" onblur="if(this.value==''){randomcolours(2);} else{pathcolour=this.value; replacergbs(); redraw();}"><br><br>
+			<button style="color:#FF0000" onfocus="document.getElementById('colourpicker').style.visibility='hidden';" onclick="colourchange('path','red','minus');">&#8722;</button><button style="color:#FF0000" onfocus="document.getElementById('colourpicker').style.visibility='hidden';" onclick="colourchange('path','red','plus');">+</button>
+			<button style="color:#00DD00" onfocus="document.getElementById('colourpicker').style.visibility='hidden';" onclick="colourchange('path','green','minus');">&#8722;</button><button style="color:#00CC00" onfocus="document.getElementById('colourpicker').style.visibility='hidden';" onclick="colourchange('path','green','plus');">+</button>
+			<button style="color:#1177FF" onfocus="document.getElementById('colourpicker').style.visibility='hidden';" onclick="colourchange('path','blue','minus');">&#8722;</button><button style="color:#1177FF" onfocus="document.getElementById('colourpicker').style.visibility='hidden';" onclick="colourchange('path','blue','plus');">+</button>
+			<button id="pathcoloursample" onfocus="document.getElementById('colourpicker').style.visibility='hidden';" onclick="whatareyoucolouring=2; pickappear()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+			<input id="pathcolourbox" class="colourbox" onfocus="document.getElementById('colourpicker').style.visibility='hidden';" type="text" onblur="if(this.value==''){randomcolours(2);} else{pathcolour=this.value; replacergbs(); redraw();}"><br><br>
 
 			<a class="controlstext">Frame Colour</a><br><br>
-			<button style="color:#FF0000" onclick="colourchange('frame','red','minus');">&#8722;</button><button style="color:#FF0000" onclick="colourchange('frame','red','plus');">+</button>
-			<button style="color:#00DD00" onclick="colourchange('frame','green','minus');">&#8722;</button><button style="color:#00CC00" onclick="colourchange('frame','green','plus');">+</button>
-			<button style="color:#1177FF" onclick="colourchange('frame','blue','minus');">&#8722;</button><button style="color:#1177FF" onclick="colourchange('frame','blue','plus');">+</button>
-			<button id="framecoloursample" onclick="randomcolours(3);">&nbsp;&nbsp;&nbsp;&nbsp;</button>
-			<input id="framecolourbox" class="colourbox" type="text" onblur="if(this.value==''){randomcolours(3);} else{framecolour=this.value; replacergbs(); redraw();}"><br><br>
+			<button style="color:#FF0000" onfocus="document.getElementById('colourpicker').style.visibility='hidden';" onclick="colourchange('frame','red','minus');">&#8722;</button><button style="color:#FF0000" onfocus="document.getElementById('colourpicker').style.visibility='hidden';" onclick="colourchange('frame','red','plus');">+</button>
+			<button style="color:#00DD00" onfocus="document.getElementById('colourpicker').style.visibility='hidden';" onclick="colourchange('frame','green','minus');">&#8722;</button><button style="color:#00CC00" onfocus="document.getElementById('colourpicker').style.visibility='hidden';" onclick="colourchange('frame','green','plus');">+</button>
+			<button style="color:#1177FF" onfocus="document.getElementById('colourpicker').style.visibility='hidden';" onclick="colourchange('frame','blue','minus');">&#8722;</button><button style="color:#1177FF" onfocus="document.getElementById('colourpicker').style.visibility='hidden';" onclick="colourchange('frame','blue','plus');">+</button>
+			<button id="framecoloursample" onfocus="document.getElementById('colourpicker').style.visibility='hidden';" onclick="whatareyoucolouring=3; pickappear()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+			<input id="framecolourbox" class="colourbox" onfocus="document.getElementById('colourpicker').style.visibility='hidden';" type="text" onblur="if(this.value==''){randomcolours(3);} else{framecolour=this.value; replacergbs(); redraw();}"><br><br>
 
 		</center></td>
 
 	</tr></table>
+
+	<div id="colourpicker" class="pickingtable" style="visibility:hidden; position:absolute; top:0px; left:0px;"><table style="background-color:black; border:1px solid white">
+		<tr>
+			<td><button class="colourbutton" style="background-color:#ff0000"; onclick="pickcolour(whatareyoucolouring, '#ff0000')"></button></td>
+			<td><button class="colourbutton" style="background-color:#ffff00"; onclick="pickcolour(whatareyoucolouring, '#ffff00')"></button></td>
+			<td><button class="colourbutton" style="background-color:#00ff00"; onclick="pickcolour(whatareyoucolouring, '#00ff00')"></button></td>
+			<td><button class="colourbutton" style="background-color:#00ffff"; onclick="pickcolour(whatareyoucolouring, '#00ffff')"></button></td>
+			<td><button class="colourbutton" style="background-color:#0000ff"; onclick="pickcolour(whatareyoucolouring, '#0000ff')"></button></td>
+			<td><button class="colourbutton" style="background-color:#ff00ff"; onclick="pickcolour(whatareyoucolouring, '#ff00ff')"></button></td>
+		</tr>
+		<tr>
+			<td><button class="colourbutton" style="background-color:#550000"; onclick="pickcolour(whatareyoucolouring, '#550000')"></button></td>
+			<td><button class="colourbutton" style="background-color:#555500"; onclick="pickcolour(whatareyoucolouring, '#555500')"></button></td>
+			<td><button class="colourbutton" style="background-color:#005500"; onclick="pickcolour(whatareyoucolouring, '#005500')"></button></td>
+			<td><button class="colourbutton" style="background-color:#005555"; onclick="pickcolour(whatareyoucolouring, '#005555')"></button></td>
+			<td><button class="colourbutton" style="background-color:#000055"; onclick="pickcolour(whatareyoucolouring, '#000055')"></button></td>
+			<td><button class="colourbutton" style="background-color:#550055"; onclick="pickcolour(whatareyoucolouring, '#550055')"></button></td>
+		</tr>
+		<tr>
+			<td><button class="colourbutton" style="background-color:#ffcccc"; onclick="pickcolour(whatareyoucolouring, '#ffcccc')"></button></td>
+			<td><button class="colourbutton" style="background-color:#ff7700"; onclick="pickcolour(whatareyoucolouring, '#ff7700')"></button></td>
+			<td><button class="colourbutton" style="background-color:#77ff77"; onclick="pickcolour(whatareyoucolouring, '#77ff77')"></button></td>
+			<td><button class="colourbutton" style="background-color:#5aa4f9"; onclick="pickcolour(whatareyoucolouring, '#5aa4f9')"></button></td>
+			<td><button class="colourbutton" style="background-color:#6666bb"; onclick="pickcolour(whatareyoucolouring, '#6666bb')"></button></td>
+			<td><button class="colourbutton" style="background-color:#8800bb"; onclick="pickcolour(whatareyoucolouring, '#8800bb')"></button></td>
+		</tr>
+		<tr>
+			<td><button class="colourbutton" style="background-color:#aa5555"; onclick="pickcolour(whatareyoucolouring, '#aa5555')"></button></td>
+			<td><button class="colourbutton" style="background-color:#885500"; onclick="pickcolour(whatareyoucolouring, '#885500')"></button></td>
+			<td><button class="colourbutton" style="background-color:#33aa33"; onclick="pickcolour(whatareyoucolouring, '#33aa33')"></button></td>
+			<td><button class="colourbutton" style="background-color:#2a74c9"; onclick="pickcolour(whatareyoucolouring, '#2a74c9')"></button></td>
+			<td><button class="colourbutton" style="background-color:#222255"; onclick="pickcolour(whatareyoucolouring, '#222255')"></button></td>
+			<td><button class="colourbutton" style="background-color:#880088"; onclick="pickcolour(whatareyoucolouring, '#880088')"></button></td>
+		</tr>
+		<tr>
+			<td><button class="colourbutton" style="background-color:#000000"; onclick="pickcolour(whatareyoucolouring, '#000000')"></button></td>
+			<td><button class="colourbutton" style="background-color:#333333"; onclick="pickcolour(whatareyoucolouring, '#333333')"></button></td>
+			<td><button class="colourbutton" style="background-color:#666666"; onclick="pickcolour(whatareyoucolouring, '#666666')"></button></td>
+			<td><button class="colourbutton" style="background-color:#999999"; onclick="pickcolour(whatareyoucolouring, '#999999')"></button></td>
+			<td><button class="colourbutton" style="background-color:#cccccc"; onclick="pickcolour(whatareyoucolouring, '#cccccc')"></button></td>
+			<td><button class="colourbutton" style="background-color:#ffffff"; onclick="pickcolour(whatareyoucolouring, '#ffffff')"></button></td>
+		</tr>
+		<tr>
+			<td><button class="colourbutton" style="background-color:#231006"; onclick="pickcolour(whatareyoucolouring, '#231006')"></button></td>
+			<td><button class="colourbutton" style="background-color:#49281d"; onclick="pickcolour(whatareyoucolouring, '#49281d')"></button></td>
+			<td><button class="colourbutton" style="background-color:#655145"; onclick="pickcolour(whatareyoucolouring, '#655145')"></button></td>
+			<td colspan="3"><button class="randombutton" onclick="randomcolours(whatareyoucolouring); document.getElementById('colourpicker').style.visibility='hidden';">Random</button></td>
+		</tr>
+	</table></div>
 
 </center></body></html>
 
@@ -117,6 +166,8 @@ var code=[];
 var desirediterations=3;
 generatecode(desirediterations);
 generatecommands(code[desirediterations]);
+
+var whatareyoucolouring=0;
 
 canvas.width = field.width;
 canvas.height = field.height;
@@ -442,6 +493,22 @@ function randomcolours(n){
 	  framecolour="#"+framerhex+""+frameghex+""+framebhex;
 	}
 	redraw();
+}
+
+function pickappear(){
+
+	document.getElementById("colourpicker").style.visibility="visible";
+  document.getElementById("colourpicker").style.left=(event.clientX-300)+"px";
+  document.getElementById("colourpicker").style.top=(event.clientY-200)+"px";
+
+}
+
+function pickcolour(n, colour){
+	if(n==0){document.getElementById("colourpicker").style.visibility="hidden"; snowflakecolour=colour; replacergbs(); redraw();}
+	if(n==1){document.getElementById("colourpicker").style.visibility="hidden"; fieldcolour=colour; replacergbs(); redraw();}
+	if(n==2){document.getElementById("colourpicker").style.visibility="hidden"; pathcolour=colour; replacergbs(); redraw();}
+	if(n==3){document.getElementById("colourpicker").style.visibility="hidden"; framecolour=colour; replacergbs(); redraw();}
+
 }
 
 draw();

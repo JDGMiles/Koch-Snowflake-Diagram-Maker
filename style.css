@@ -12,6 +12,10 @@ button {font-family:Liberation Serif; background-color:black; color:white; font-
 
 .colourbox {background-color:black; color:white; font-size:32px; font-family:Liberation Serif; text-align:center; height:44px; width:140px;}
 
+.colourbutton {width:40px; height:40px;}
+
+.randombutton {width:128px; height:40px;}
+
 .overlay {
   position: fixed;
   top: 0;
